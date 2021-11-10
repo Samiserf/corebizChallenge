@@ -1,5 +1,21 @@
+*,
+*::before,
+::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html body {
+  padding: 0;
+  margin: 0;
+  overflow-y: inherit;
+}
+
 .App {
-  text-align: center;
+  width: 100vw;
 }
 
 .App-logo {

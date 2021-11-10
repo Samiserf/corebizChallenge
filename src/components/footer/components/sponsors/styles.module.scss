@@ -1,0 +1,20 @@
+.containerSponsors {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: initial;
+  margin-right: 30px;
+  span {
+    text-align: left;
+    letter-spacing: 0px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  i {
+    font-size: 30px;
+  }
+  img {
+    width: 90px;
+    color: #ffffff;
+  }
+}

@@ -1,0 +1,21 @@
+.containerButton {
+  color: black;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-inline: 40px;
+
+  h3 {
+    text-align: left;
+    font: normal normal 600 12px/16px Nunito;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-left: 30px;
+  }
+  i {
+    font-size: 30px;
+  }
+}
