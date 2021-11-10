@@ -5,9 +5,7 @@
 Correr server
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm start
 ```
 
 ## Estructura sitio
