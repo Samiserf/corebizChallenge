@@ -7,7 +7,9 @@ import ReactStars from "react-stars";
 
 export default function ProductsBestSold() {
   const [products, setProducts] = React.useState();
-  const [cart, setCart] = useContext(CartContext);
+  const [, setCart] = useContext(CartContext);
+
+  //In first ejecution get all products.
 
   React.useEffect(() => {
     fetch("https://corebiz-test.herokuapp.com/api/v1/products")
@@ -16,18 +18,15 @@ export default function ProductsBestSold() {
       .catch((err) => console.error(err));
   }, []);
 
-  console.log(products);
-
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 4,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-      paritialVisibilityGutter: 100,
+      items: 3,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -38,6 +37,8 @@ export default function ProductsBestSold() {
       items: 1,
     },
   };
+
+  //Increment context and set Localstorage for cart
 
   const incrementCart = () => {
     localStorage.setItem(
@@ -58,8 +59,7 @@ export default function ProductsBestSold() {
           <div className={css.products}>
             <Carousel
               ssr
-              partialVisbile
-              deviceType="desktop"
+              deviceType={"desktop"}
               itemClass="image-item"
               responsive={responsive}
             >

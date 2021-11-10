@@ -4,7 +4,9 @@ import "font-awesome/css/font-awesome.min.css";
 import { CartContext } from "../../context/cartContext";
 
 export default function Nav() {
-  const [cart, setCart] = useContext(CartContext);
+  const [cart] = useContext(CartContext);
+
+  //In this nav, it's use context for cart and classes for responsive hamburger. (see style)
 
   return (
     <>

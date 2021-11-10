@@ -8,7 +8,9 @@ import ProductsBestSold from "./components/productsBestSold/productsBestSold";
 import { CartContext } from "./context/cartContext";
 
 function App() {
-  const [cart, setCart] = useContext(CartContext);
+  //Logic using context for increment cart
+
+  const [, setCart] = useContext(CartContext);
 
   React.useEffect(() => {
     if (localStorage.getItem("countCart")) {
@@ -18,7 +20,9 @@ function App() {
       localStorage.setItem("countCart", 0);
       setCart(0);
     }
-  }, []);
+  }, [setCart]);
+
+  //Finish Logic using context for increment cart
 
   return (
     <div className="App">

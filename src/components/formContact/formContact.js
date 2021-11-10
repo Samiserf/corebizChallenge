@@ -10,6 +10,9 @@ export default function Header() {
   const [errorName, setErrorName] = React.useState("");
   const [errorMail, setErrorMail] = React.useState("");
 
+  //Function sendSuscribe -> Validation errors and set state that showing in html
+  //If !errors -> call fetch for post newsLetter
+
   function sendSuscribe() {
     setErrorName("");
     setErrorMail("");
@@ -24,7 +27,6 @@ export default function Header() {
       setErrorMail("El email esta vacio.");
     }
     if (email !== "" && errorName === "" && name !== "" && errorMail === "") {
-      console.log("fetch");
       fetch("https://corebiz-test.herokuapp.com/api/v1/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,19 +38,23 @@ export default function Header() {
     }
   }
 
+  //This useEffect catch success or errors in api and show with Alert (Change for SnackBar)
+
   React.useEffect(() => {
     if (
-      responseFormApi.message == "Created successfully" &&
-      responseFormApi !== undefined
+      responseFormApi.message === "Created successfully" &&
+      !!responseFormApi
     ) {
       alert("Solicitud enviada correctamente");
     } else if (
       responseFormApi.message !== "Created successfully" &&
-      responseFormApi !== undefined
+      !!responseFormApi
     ) {
-      alert("Ha ocurrido un error enviando su solicitud.");
+      alert(responseFormApi.message);
     }
   }, [responseFormApi]);
+
+  //Manaje state with function
 
   const setState = (e, state) => {
     state(e.target.value);
@@ -63,7 +69,7 @@ export default function Header() {
             onChange={(e) => setState(e, setName)}
             placeholder="Ingresa tu nombre"
             type="text"
-            className={errorName !== "" && css.error}
+            className={errorName !== "" ? css.error : undefined}
           />
           {errorName !== "" && <p>{errorName}</p>}
         </div>
@@ -72,7 +78,7 @@ export default function Header() {
             onChange={(e) => setState(e, setEmail)}
             placeholder="Ingresa tu mail"
             type="mail"
-            className={errorMail !== "" && css.error}
+            className={errorMail !== "" ? css.error : undefined}
           />
           {errorMail !== "" && <p>{errorMail}</p>}
         </div>
