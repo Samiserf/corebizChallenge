@@ -5,6 +5,8 @@ export default function Header() {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
 
+  const [callApiControl, setCallApiControl] = React.useState(false);
+
   const [responseFormApi, setResponseFormApi] = React.useState("");
 
   const [errorName, setErrorName] = React.useState("");
@@ -26,6 +28,15 @@ export default function Header() {
     if (email === "") {
       setErrorMail("El email esta vacio.");
     }
+    setCallApiControl(!callApiControl);
+  }
+
+  React.useEffect(() => {
+    console.log("akljsdkjlsad");
+    console.log(email);
+    console.log(errorName);
+    console.log(name);
+    console.log(errorMail);
     if (email !== "" && errorName === "" && name !== "" && errorMail === "") {
       fetch("https://corebiz-test.herokuapp.com/api/v1/newsletter", {
         method: "POST",
@@ -36,23 +47,30 @@ export default function Header() {
         .then((res) => setResponseFormApi(res))
         .catch((err) => console.error(err));
     }
-  }
+  }, [callApiControl]);
+
+  React.useEffect(() => {
+    responseFormApi &&
+      setTimeout(() => {
+        setResponseFormApi(undefined);
+      }, 4000);
+  }, [responseFormApi]);
 
   //This useEffect catch success or errors in api and show with Alert (Change for SnackBar)
 
-  React.useEffect(() => {
-    if (
-      responseFormApi.message === "Created successfully" &&
-      !!responseFormApi
-    ) {
-      alert("Solicitud enviada correctamente");
-    } else if (
-      responseFormApi.message !== "Created successfully" &&
-      !!responseFormApi
-    ) {
-      alert(responseFormApi.message);
-    }
-  }, [responseFormApi]);
+  // React.useEffect(() => {
+  //   if (
+  //     responseFormApi.message === "Created successfully" &&
+  //     !!responseFormApi
+  //   ) {
+  //     alert("Solicitud enviada correctamente");
+  //   } else if (
+  //     responseFormApi.message !== "Created successfully" &&
+  //     !!responseFormApi
+  //   ) {
+  //     alert(responseFormApi.message);
+  //   }
+  // }, [responseFormApi]);
 
   //Manaje state with function
 
@@ -86,6 +104,13 @@ export default function Header() {
           Suscribirme
         </button>
       </div>
+      {responseFormApi ? (
+        responseFormApi.message === "Created successfully" ? (
+          <p style={{ color: "green" }}>Se ha registrado correctamente</p>
+        ) : (
+          <p style={{ color: "red" }}>{responseFormApi.message}</p>
+        )
+      ) : null}
     </section>
   );
 }

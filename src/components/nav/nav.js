@@ -34,7 +34,9 @@ export default function Nav() {
           </div>
           <div className={css.cart}>
             <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-            <p>{cart}</p>
+            <div className={css.NumberProductCard}>
+              <p>{cart}</p>
+            </div>
           </div>
         </div>
         <div className={css.navBottom}>

@@ -68,14 +68,18 @@
       display: flex;
       align-items: center;
       cursor: pointer;
-      p {
-        background: #f8475f;
-        border-radius: 50%;
-        padding: 3px;
-        font-size: 14px;
-        margin: 3px;
-        color: white;
-        font-weight: 600;
+      .NumberProductCard {
+        width: 30px;
+        height: 30px;
+        p {
+          background: #f8475f;
+          border-radius: 50%;
+          padding: 3px;
+          font-size: 14px;
+          margin: 3px;
+          color: white;
+          font-weight: 600;
+        }
       }
     }
   }
