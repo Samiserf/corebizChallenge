@@ -14,7 +14,6 @@
     "react-query": "^3.32.1",
     "react-responsive-carousel": "^3.2.22",
     "react-scripts": "4.0.3",
-    "react-simple-snackbar": "^1.1.11",
     "react-stars": "^2.2.5",
     "web-vitals": "^1.1.2"
   },
